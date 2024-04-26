@@ -11,14 +11,38 @@ class Racional(n: Int, d: Int):
   // para quando o denominador for = 1
   def this(n: Int) = this(n , 1)
 
-  // função para adicionar dois números racionais
-  def add(that: Racional): Racional = {
+
+  // synthatic sugar --- versão mais curta de add
+  def + (that: Racional): Racional = {
     Racional(num * that.den + den * that.num, den * that.den)
   }
 
-  // synthatic sugar --- versão mais curta de add
-  def +(that: Racional): Racional = {
-    Racional(num * that.den + den * that.num, den * that.den)
+  def + (x: Int): Racional = {
+    Racional(num + x * den, den)
+  }
+
+  def - (that: Racional): Racional = {
+    Racional(num * that.den - that.num * den, den * that.den)
+  }
+
+  def - (x: Int): Racional = {
+    Racional(num - x * den, den)
+  }
+
+  def * (that: Racional): Racional = {
+    Racional(num * that.num, den * that.den)
+  }
+
+  def * (x: Int): Racional = {
+    Racional(num * x, den)
+  }
+
+  def / (that: Racional): Racional = {
+    Racional(num * that.den, den * that.num)
+  }
+
+  def / (x: Int): Racional = {
+    Racional(num, den * x)
   }
 
   private def gcd(a: Int, b: Int): Int = {
