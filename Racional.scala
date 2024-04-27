@@ -45,6 +45,10 @@ class Racional(n: Int, d: Int):
     Racional(num, den * x)
   }
 
+  def ^ (x: Int): Racional = {
+    Racional(Math.pow(num, x).intValue(), Math.pow(den,x).intValue())
+  }
+
   private def gcd(a: Int, b: Int): Int = {
     if (b == 0) a else gcd(b, a % b)
   }
